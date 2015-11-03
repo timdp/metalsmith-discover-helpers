@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-discover-helpers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Discovers your template helpers and registers them with Handlebars.",
   "keywords": [
     "metalsmith",
