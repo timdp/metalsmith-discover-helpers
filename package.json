@@ -1,0 +1,34 @@
+{
+  "name": "metalsmith-discover-helpers",
+  "version": "0.0.0",
+  "description": "Discovers your template helpers and registers them with Handlebars.",
+  "keywords": [
+    "metalsmith",
+    "handlebars",
+    "helpers"
+  ],
+  "author": "Tim De Pauw <hi@tmdpw.eu> (https://tmdpw.eu/)",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "dependencies": {
+    "defaults": "^1.0.3",
+    "fs-tools": "^0.2.11",
+    "handlebars": "*"
+  },
+  "devDependencies": {
+    "standard": "^5.3.1"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "node node_modules/standard/bin/cmd.js"
+  },
+  "repository": "timdp/metalsmith-discover-helpers",
+  "bugs": {
+    "url": "https://github.com/timdp/metalsmith-discover-helpers/issues"
+  },
+  "license": "MIT"
+}
