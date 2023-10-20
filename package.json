@@ -30,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/timdp/metalsmith-discover-helpers/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
