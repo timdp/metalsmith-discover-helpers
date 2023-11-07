@@ -1,28 +1,32 @@
-'use strict'
+import defaults from 'defaults';
+import Handlebars from 'handlebars';
+import fsTools from 'fs-tools';
+const { walk } = fsTools;
+import path from 'path';
 
-var defaults = require('defaults')
-var Handlebars = require('handlebars')
-var walk = require('fs-tools').walk
-var path = require('path')
-
-var onFile = function (file, stats, next) {
-  var fn = null
-  try {
-    fn = require(path.resolve(file))
-  } catch (err) {
-    return next(err)
-  }
-  var id = path.basename(file, path.extname(file))
-  Handlebars.registerHelper(id, fn)
-  next()
+function onFile(file, stats, next) {
+  const id = path.basename(file, path.extname(file));
+  import(path.resolve(file)).then(module => {
+    for (var key of Object.keys(module)) {
+      const fn = module[key];
+      let name = fn.name;
+      if (name === "default") {
+        name = id;
+      } else if (!name) {
+        name = key;
+      }
+      Handlebars.registerHelper(name, fn);
+    }
+    next();
+  }).catch(next);
 }
 
-module.exports = function (options) {
+export default function (options) {
   options = defaults(options, {
     directory: 'helpers',
     pattern: /\.js$/
-  })
+  });
   return function (files, metalsmith, done) {
-    walk(metalsmith.path(options.directory), options.pattern, onFile, done)
+    walk(metalsmith.path(options.directory), options.pattern, onFile, done);
   }
 }

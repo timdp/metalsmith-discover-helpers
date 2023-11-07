@@ -22,9 +22,10 @@ In `metalsmith.json`:
 Using Metalsmith's API:
 
 ```js
-var discoverHelpers = require('metalsmith-discover-helpers')
+import Metalsmith from "metalsmith";
+import discoverHelpers from "metalsmith-discover-helpers";
 
-require('metalsmith')(__dirname)
+Metalsmith(__dirname)
   .use(discoverHelpers({
     directory: 'helpers',
     pattern: /\.js$/
